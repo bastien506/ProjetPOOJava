@@ -1,0 +1,12 @@
+SELECT enseignement.ID_enseignement, enseignant.ID_enseignant, enseignant.Nom, enseignant.Prenom, discipline.Nom, classe.Nom 
+FROM enseignement
+INNER JOIN 
+enseignant
+on enseignement.ID_enseignant=enseignant.ID_enseignant
+INNER JOIN
+classe
+on enseignement.ID_classe=classe.ID_classe
+INNER JOIN 
+discipline
+on enseignement.ID_discipline=discipline.ID_discipline
+WHERE enseignant.Nom LIKE '%a%'
