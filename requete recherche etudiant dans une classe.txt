@@ -1,0 +1,12 @@
+SELECT niveau.Nom, classe.Nom, etudiant.Nom, etudiant.Prenom
+FROM inscription
+INNER JOIN 
+etudiant
+on inscription.ID_etudiant=etudiant.ID_etudiant
+INNER JOIN
+classe
+on inscription.ID_classe=classe.ID_classe
+INNER JOIN 
+niveau
+on classe.ID_niveau=niveau.ID_niveau
+WHERE niveau.Nom LIKE '%term%' AND classe.Nom LIKE '%S%' 
