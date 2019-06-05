@@ -1,0 +1,31 @@
+SELECT discipline.Nom, (SUM(evaluation.Note)/COUNT(discipline.Nom)) AS Moyenne
+FROM detailbulletin
+INNER JOIN 
+enseignement
+on detailbulletin.ID_enseignement=enseignement.ID_enseignement 
+INNER JOIN 
+discipline 
+on enseignement.ID_discipline=discipline.ID_discipline 
+INNER JOIN
+bulletin
+on detailbulletin.ID_bulletin=bulletin.ID_bulletin 
+INNER JOIN 
+inscription
+on bulletin.ID_inscription=inscription.ID_inscription 
+INNER JOIN 
+evaluation
+on detailbulletin.ID_detailbulletin=evaluation.ID_detailbulletin
+INNER JOIN 
+etudiant
+on etudiant.ID_etudiant=inscription.ID_etudiant
+INNER JOIN 
+trimestre
+on trimestre.ID_trimestre=bulletin.ID_trimestre
+INNER JOIN 
+anneescolaire
+on anneescolaire.ID_anneescolaire=trimestre.ID_anneescolaire
+INNER JOIN 
+classe
+on classe.ID_classe=inscription.ID_classe
+GROUP BY discipline.ID_discipline, anneescolaire.ID_anneescolaire, classe.ID_classe
+HAVING anneescolaire.ID_anneescolaire=1001 AND classe.ID_classe=3001
