@@ -1,3 +1,0 @@
-username : myuserecole2
-psw : mypassword
-url : jdbc:mysql://85.10.205.173/mydatabaseecole2
